@@ -47,7 +47,7 @@ function LoginForm() {
 
       <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow p-6 space-y-4">
         {resetSuccess && (
-          <div className="p-3 bg-green-50 text-green-700 text-sm rounded">Password reset successfully. Please log in with your new password.</div>
+          <div className="p-3 bg-[#09718E] bg-opacity-15 text-[#09718E] text-sm rounded">Password reset successfully. Please log in with your new password.</div>
         )}
 
         {error && (
