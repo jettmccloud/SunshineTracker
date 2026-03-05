@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface UserInfo {
   email: string;
@@ -60,16 +61,9 @@ export default function NavBar() {
           {/* Logo / Title */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center gap-2">
-              <svg
-                className="h-8 w-8 text-sunshine-100"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <circle cx="12" cy="12" r="5" />
-                <path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
-              </svg>
-              <span className="text-white text-xl font-bold tracking-tight">
-                SunshineTracker
+              <Image src="/logo.png" alt="Sunshine Case Tracker logo" width={32} height={32} />
+              <span className="text-gold-400 text-xl font-bold tracking-tight">
+                Sunshine Case Tracker
               </span>
             </Link>
           </div>
@@ -80,7 +74,7 @@ export default function NavBar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sunshine-100 hover:bg-sunshine-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className="text-gold-400 hover:bg-sunshine-700 hover:text-gold-200 px-3 py-2 rounded-md text-sm font-medium transition-colors"
               >
                 {link.label}
               </Link>
@@ -146,7 +140,7 @@ export default function NavBar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sunshine-100 hover:bg-sunshine-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                className="text-gold-400 hover:bg-sunshine-800 hover:text-gold-200 block px-3 py-2 rounded-md text-base font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}

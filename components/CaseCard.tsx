@@ -19,7 +19,7 @@ interface CaseCardProps {
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
-  foia: 'bg-blue-100 text-blue-800 border-blue-200',
+  foia: 'bg-[#93C8F7] text-sunshine-800 border-sunshine-300',
   sunshine: 'bg-gold-100 text-gold-800 border-gold-200',
   missing_data: 'bg-red-100 text-red-800 border-red-200',
   access_denied: 'bg-purple-100 text-purple-800 border-purple-200',

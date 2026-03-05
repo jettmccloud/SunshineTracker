@@ -23,7 +23,7 @@ interface DashboardStats {
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
-  foia: 'bg-blue-100 text-blue-800 border-blue-200',
+  foia: 'bg-[#93C8F7] text-sunshine-800 border-sunshine-300',
   sunshine: 'bg-gold-100 text-gold-800 border-gold-200',
   missing_data: 'bg-red-100 text-red-800 border-red-200',
   access_denied: 'bg-purple-100 text-purple-800 border-purple-200',
@@ -87,7 +87,7 @@ export default function Dashboard() {
     <div>
       {/* Hero */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900">SunshineTracker</h1>
+        <h1 className="text-3xl font-bold text-slate-900">Sunshine Case Tracker</h1>
         <p className="mt-2 text-lg text-slate-600">
           Find court cases where government agencies were sued over public records access, FOIA denials, missing data, and open meetings violations.
         </p>
@@ -98,11 +98,11 @@ export default function Dashboard() {
 
       {/* Search categories — what journalists are looking for */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <Link href="/search?category=foia" className="block p-5 bg-white border-l-4 border-blue-500 rounded-lg shadow-sm hover:shadow-md transition">
+        <Link href="/search?category=foia" className="block p-5 bg-white border-l-4 border-sunshine-500 rounded-lg shadow-sm hover:shadow-md transition">
           <h3 className="font-semibold text-slate-900">FOIA Lawsuits</h3>
           <p className="text-sm text-slate-500 mt-1">Federal agencies sued for withholding records under the Freedom of Information Act</p>
           {stats?.by_category.find(c => c.label === 'foia') && (
-            <p className="text-xs text-blue-600 mt-2 font-medium">{stats.by_category.find(c => c.label === 'foia')!.count} cases tracked</p>
+            <p className="text-xs text-sunshine-600 mt-2 font-medium">{stats.by_category.find(c => c.label === 'foia')!.count} cases tracked</p>
           )}
         </Link>
         <Link href="/search?category=sunshine" className="block p-5 bg-white border-l-4 border-gold-500 rounded-lg shadow-sm hover:shadow-md transition">
