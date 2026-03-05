@@ -80,7 +80,7 @@ export default function AnalysisPage() {
         </div>
         <div className="bg-white rounded-lg shadow p-4">
           <p className="text-xs text-slate-400 uppercase tracking-wide">Judges</p>
-          <p className="text-2xl font-bold text-indigo-600">
+          <p className="text-2xl font-bold text-sunshine-500">
             {data.nodes.filter((n: any) => n.type === 'judge').length}
           </p>
         </div>

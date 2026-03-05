@@ -24,7 +24,7 @@ interface DashboardStats {
 
 const CATEGORY_COLORS: Record<string, string> = {
   foia: 'bg-[#93C8F7] text-sunshine-800 border-sunshine-300',
-  sunshine: 'bg-gold-100 text-gold-800 border-gold-200',
+  sunshine: 'bg-[#FFDB84] text-[#8E6400] border-[#FFDB84]',
   missing_data: 'bg-red-100 text-red-800 border-red-200',
   access_denied: 'bg-purple-100 text-purple-800 border-purple-200',
   other: 'bg-slate-100 text-slate-700 border-slate-200',

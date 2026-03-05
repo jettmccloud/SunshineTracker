@@ -32,7 +32,7 @@ interface NetworkGraphProps {
 }
 
 const TYPE_COLORS: Record<string, string> = {
-  judge: '#6366f1',    // indigo
+  judge: '#004681',    // branding blue
   court: '#E5A307',    // gold
   category: '#10b981', // emerald
 };

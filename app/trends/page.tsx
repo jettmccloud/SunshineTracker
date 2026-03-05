@@ -86,9 +86,9 @@ export default function TrendsPage() {
                 const pctChange = ((recentAvg - earlierAvg) / earlierAvg) * 100;
                 const peak = sorted.reduce((max, d) => d.count > max.count ? d : max, sorted[0]);
                 return (
-                  <div className="mt-4 p-4 bg-gold-50 rounded-lg border border-gold-100">
-                    <h3 className="text-sm font-semibold text-gold-800 mb-2">Trend Insight</h3>
-                    <p className="text-sm text-gold-900">
+                  <div className="mt-4 p-4 bg-[#FFDB84] rounded-lg border border-[#FFDB84]">
+                    <h3 className="text-sm font-semibold text-[#8E6400] mb-2">Trend Insight</h3>
+                    <p className="text-sm text-[#8E6400]">
                       {pctChange > 10
                         ? `Recent filings have increased by approximately ${Math.round(pctChange)}% compared to earlier periods, suggesting growing tension between public access demands and government transparency. This uptick may reflect expanded enforcement of sunshine laws or increased resistance to disclosure.`
                         : pctChange < -10
