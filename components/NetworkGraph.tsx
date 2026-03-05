@@ -34,7 +34,7 @@ interface NetworkGraphProps {
 const TYPE_COLORS: Record<string, string> = {
   judge: '#004681',    // branding blue
   court: '#E5A307',    // gold
-  category: '#10b981', // emerald
+  category: '#09718E', // teal
 };
 
 const TYPE_LABELS: Record<string, string> = {

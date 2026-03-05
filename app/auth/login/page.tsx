@@ -77,7 +77,7 @@ function LoginForm() {
         </div>
 
         <div className="flex justify-end">
-          <Link href="/auth/forgot-password" className="text-sm text-gold-600 hover:underline">
+          <Link href="/auth/forgot-password" className="text-sm text-[#8E6400] hover:underline">
             Forgot Password?
           </Link>
         </div>
@@ -92,7 +92,7 @@ function LoginForm() {
 
         <p className="text-sm text-center text-slate-500">
           Don&apos;t have an account?{' '}
-          <Link href="/auth/signup" className="text-gold-600 hover:underline">
+          <Link href="/auth/signup" className="text-[#8E6400] hover:underline">
             Sign up
           </Link>
         </p>

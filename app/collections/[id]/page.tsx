@@ -83,7 +83,7 @@ export default function CollectionDetailPage() {
     return (
       <div className="text-center py-20">
         <h2 className="text-xl text-slate-600">Collection not found</h2>
-        <Link href="/collections" className="text-gold-600 hover:underline mt-2 inline-block">
+        <Link href="/collections" className="text-[#8E6400] hover:underline mt-2 inline-block">
           Back to collections
         </Link>
       </div>
@@ -92,7 +92,7 @@ export default function CollectionDetailPage() {
 
   return (
     <div>
-      <Link href="/collections" className="text-sm text-gold-600 hover:underline mb-4 inline-block">
+      <Link href="/collections" className="text-sm text-[#8E6400] hover:underline mb-4 inline-block">
         &larr; Back to collections
       </Link>
 
@@ -125,7 +125,7 @@ export default function CollectionDetailPage() {
         <div className="bg-white rounded-lg shadow p-8 text-center">
           <p className="text-slate-500">
             No cases in this collection yet.{' '}
-            <Link href="/search" className="text-gold-600 hover:underline">
+            <Link href="/search" className="text-[#8E6400] hover:underline">
               Search for cases
             </Link>{' '}
             and add them here.

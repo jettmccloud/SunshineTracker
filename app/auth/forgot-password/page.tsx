@@ -41,7 +41,7 @@ export default function ForgotPasswordPage() {
           <p className="text-slate-600">
             If an account exists with that email, we sent a password reset link. Please check your inbox and spam folder.
           </p>
-          <Link href="/auth/login" className="inline-block text-gold-600 hover:underline text-sm">
+          <Link href="/auth/login" className="inline-block text-[#8E6400] hover:underline text-sm">
             Back to Log In
           </Link>
         </div>
@@ -82,7 +82,7 @@ export default function ForgotPasswordPage() {
         </button>
 
         <p className="text-sm text-center text-slate-500">
-          <Link href="/auth/login" className="text-gold-600 hover:underline">
+          <Link href="/auth/login" className="text-[#8E6400] hover:underline">
             Back to Log In
           </Link>
         </p>

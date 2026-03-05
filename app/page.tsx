@@ -25,8 +25,8 @@ interface DashboardStats {
 const CATEGORY_COLORS: Record<string, string> = {
   foia: 'bg-[#93C8F7] text-sunshine-800 border-sunshine-300',
   sunshine: 'bg-[#FFDB84] text-[#8E6400] border-[#FFDB84]',
-  missing_data: 'bg-red-100 text-red-800 border-red-200',
-  access_denied: 'bg-purple-100 text-purple-800 border-purple-200',
+  missing_data: 'bg-[#AA3500] bg-opacity-15 text-[#AA3500] border-[#AA3500]',
+  access_denied: 'bg-[#09718E] bg-opacity-15 text-[#09718E] border-[#09718E]',
   other: 'bg-slate-100 text-slate-700 border-slate-200',
 };
 
@@ -109,21 +109,21 @@ export default function Dashboard() {
           <h3 className="font-semibold text-slate-900">Open Records Disputes</h3>
           <p className="text-sm text-slate-500 mt-1">State and local agencies challenged under sunshine laws, open records acts, and public meetings laws</p>
           {stats?.by_category.find(c => c.label === 'sunshine') && (
-            <p className="text-xs text-gold-600 mt-2 font-medium">{stats.by_category.find(c => c.label === 'sunshine')!.count} cases tracked</p>
+            <p className="text-xs text-[#8E6400] mt-2 font-medium">{stats.by_category.find(c => c.label === 'sunshine')!.count} cases tracked</p>
           )}
         </Link>
-        <Link href="/search?category=missing_data" className="block p-5 bg-white border-l-4 border-red-500 rounded-lg shadow-sm hover:shadow-md transition">
+        <Link href="/search?category=missing_data" className="block p-5 bg-white border-l-4 border-[#AA3500] rounded-lg shadow-sm hover:shadow-md transition">
           <h3 className="font-semibold text-slate-900">Missing / Destroyed Records</h3>
           <p className="text-sm text-slate-500 mt-1">Cases alleging records were lost, destroyed, or never produced by government entities</p>
           {stats?.by_category.find(c => c.label === 'missing_data') && (
-            <p className="text-xs text-red-600 mt-2 font-medium">{stats.by_category.find(c => c.label === 'missing_data')!.count} cases tracked</p>
+            <p className="text-xs text-[#AA3500] mt-2 font-medium">{stats.by_category.find(c => c.label === 'missing_data')!.count} cases tracked</p>
           )}
         </Link>
-        <Link href="/search?category=access_denied" className="block p-5 bg-white border-l-4 border-purple-500 rounded-lg shadow-sm hover:shadow-md transition">
+        <Link href="/search?category=access_denied" className="block p-5 bg-white border-l-4 border-[#09718E] rounded-lg shadow-sm hover:shadow-md transition">
           <h3 className="font-semibold text-slate-900">Access Denied</h3>
           <p className="text-sm text-slate-500 mt-1">Records requests denied, heavily redacted, or delayed — and the court battles that followed</p>
           {stats?.by_category.find(c => c.label === 'access_denied') && (
-            <p className="text-xs text-purple-600 mt-2 font-medium">{stats.by_category.find(c => c.label === 'access_denied')!.count} cases tracked</p>
+            <p className="text-xs text-[#09718E] mt-2 font-medium">{stats.by_category.find(c => c.label === 'access_denied')!.count} cases tracked</p>
           )}
         </Link>
       </div>
@@ -132,7 +132,7 @@ export default function Dashboard() {
       <div className="bg-white rounded-lg shadow">
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
           <h2 className="text-lg font-semibold text-slate-800">Recent Cases</h2>
-          <Link href="/search" className="text-gold-600 hover:text-gold-700 text-sm font-medium">
+          <Link href="/search" className="text-[#8E6400] hover:text-[#8E6400] text-sm font-medium">
             Search all cases &rarr;
           </Link>
         </div>
@@ -142,7 +142,7 @@ export default function Dashboard() {
               <Link key={c.id} href={`/case/${c.id}`} className="block px-6 py-4 hover:bg-slate-50 transition">
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0 flex-1">
-                    <p className="font-medium text-slate-900 hover:text-gold-700 transition">{c.case_name}</p>
+                    <p className="font-medium text-slate-900 hover:text-[#8E6400] transition">{c.case_name}</p>
                     <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-sm text-slate-500">
                       <span>{c.court_name}</span>
                       {c.date_filed && (
@@ -181,7 +181,7 @@ export default function Dashboard() {
           </div>
         ) : (
           <div className="px-6 py-8 text-center">
-            <p className="text-slate-500">No cases cached yet. <Link href="/search" className="text-gold-600 hover:underline">Search CourtListener</Link> to start building your research database.</p>
+            <p className="text-slate-500">No cases cached yet. <Link href="/search" className="text-[#8E6400] hover:underline">Search CourtListener</Link> to start building your research database.</p>
           </div>
         )}
       </div>
@@ -193,7 +193,7 @@ export default function Dashboard() {
             <h3 className="text-sm font-semibold text-slate-600 uppercase tracking-wide mb-3">By Jurisdiction</h3>
             <div className="space-y-2">
               {stats.by_jurisdiction.map((item) => (
-                <Link key={item.label} href={`/search?jurisdiction_type=${item.label}`} className="flex items-center justify-between py-1 hover:text-gold-700 transition">
+                <Link key={item.label} href={`/search?jurisdiction_type=${item.label}`} className="flex items-center justify-between py-1 hover:text-[#8E6400] transition">
                   <span className="text-slate-700 capitalize">{item.label}</span>
                   <span className="text-slate-500 font-mono text-sm">{item.count}</span>
                 </Link>
@@ -203,11 +203,11 @@ export default function Dashboard() {
           <div className="bg-white rounded-lg shadow p-6">
             <h3 className="text-sm font-semibold text-slate-600 uppercase tracking-wide mb-3">Quick Links</h3>
             <div className="space-y-2 text-sm">
-              <Link href="/trends" className="block text-gold-700 hover:text-gold-800 font-medium">View trend analysis &rarr;</Link>
-              <Link href="/search?state=California" className="block text-slate-600 hover:text-gold-700">California public records cases</Link>
-              <Link href="/search?state=Texas" className="block text-slate-600 hover:text-gold-700">Texas public records cases</Link>
-              <Link href="/search?state=New York" className="block text-slate-600 hover:text-gold-700">New York public records cases</Link>
-              <Link href="/search?state=Florida" className="block text-slate-600 hover:text-gold-700">Florida public records cases</Link>
+              <Link href="/trends" className="block text-[#8E6400] hover:text-[#8E6400] font-medium">View trend analysis &rarr;</Link>
+              <Link href="/search?state=California" className="block text-slate-600 hover:text-[#8E6400]">California public records cases</Link>
+              <Link href="/search?state=Texas" className="block text-slate-600 hover:text-[#8E6400]">Texas public records cases</Link>
+              <Link href="/search?state=New York" className="block text-slate-600 hover:text-[#8E6400]">New York public records cases</Link>
+              <Link href="/search?state=Florida" className="block text-slate-600 hover:text-[#8E6400]">Florida public records cases</Link>
             </div>
           </div>
         </div>

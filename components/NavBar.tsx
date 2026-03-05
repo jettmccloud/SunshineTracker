@@ -52,6 +52,7 @@ export default function NavBar() {
     { href: '/trends', label: 'Trends' },
     { href: '/collections', label: 'Collections' },
     { href: '/analysis', label: 'Analysis' },
+    { href: '/about', label: 'About' },
   ];
 
   return (

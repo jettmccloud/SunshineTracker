@@ -74,7 +74,7 @@ export default function AnalysisPage() {
       <div className="mt-6 grid grid-cols-3 gap-4">
         <div className="bg-white rounded-lg shadow p-4">
           <p className="text-xs text-slate-400 uppercase tracking-wide">Courts</p>
-          <p className="text-2xl font-bold text-gold-600">
+          <p className="text-2xl font-bold text-[#8E6400]">
             {data.nodes.filter((n: any) => n.type === 'court').length}
           </p>
         </div>
@@ -86,7 +86,7 @@ export default function AnalysisPage() {
         </div>
         <div className="bg-white rounded-lg shadow p-4">
           <p className="text-xs text-slate-400 uppercase tracking-wide">Categories</p>
-          <p className="text-2xl font-bold text-emerald-600">
+          <p className="text-2xl font-bold text-[#09718E]">
             {data.nodes.filter((n: any) => n.type === 'category').length}
           </p>
         </div>

@@ -22,7 +22,7 @@ function ResetPasswordForm() {
           <p className="text-slate-600">
             This password reset link is invalid. Please request a new one.
           </p>
-          <Link href="/auth/forgot-password" className="inline-block text-gold-600 hover:underline text-sm">
+          <Link href="/auth/forgot-password" className="inline-block text-[#8E6400] hover:underline text-sm">
             Request New Reset Link
           </Link>
         </div>
@@ -107,7 +107,7 @@ function ResetPasswordForm() {
         </button>
 
         <p className="text-sm text-center text-slate-500">
-          <Link href="/auth/login" className="text-gold-600 hover:underline">
+          <Link href="/auth/login" className="text-[#8E6400] hover:underline">
             Back to Log In
           </Link>
         </p>

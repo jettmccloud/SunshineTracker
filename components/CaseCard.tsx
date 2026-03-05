@@ -21,8 +21,8 @@ interface CaseCardProps {
 const CATEGORY_COLORS: Record<string, string> = {
   foia: 'bg-[#93C8F7] text-sunshine-800 border-sunshine-300',
   sunshine: 'bg-[#FFDB84] text-[#8E6400] border-[#FFDB84]',
-  missing_data: 'bg-red-100 text-red-800 border-red-200',
-  access_denied: 'bg-purple-100 text-purple-800 border-purple-200',
+  missing_data: 'bg-[#AA3500] bg-opacity-15 text-[#AA3500] border-[#AA3500]',
+  access_denied: 'bg-[#09718E] bg-opacity-15 text-[#09718E] border-[#09718E]',
   other: 'bg-slate-100 text-slate-700 border-slate-200',
 };
 
@@ -56,7 +56,7 @@ export default function CaseCard({ case: caseData }: CaseCardProps) {
     <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-5 hover:shadow-md transition">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <Link href={`/case/${caseData.id}`} className="text-base font-semibold text-slate-900 hover:text-gold-700 transition leading-snug">
+          <Link href={`/case/${caseData.id}`} className="text-base font-semibold text-slate-900 hover:text-[#8E6400] transition leading-snug">
             {caseData.case_name}
           </Link>
 
@@ -97,7 +97,7 @@ export default function CaseCard({ case: caseData }: CaseCardProps) {
       {caseData.matched_keywords?.length > 0 && (
         <div className="flex flex-wrap gap-1 mt-3">
           {caseData.matched_keywords.map((kw) => (
-            <span key={kw} className="px-1.5 py-0.5 bg-gold-50 text-gold-700 text-xs rounded">
+            <span key={kw} className="px-1.5 py-0.5 bg-[#FFDB84] text-[#8E6400] text-xs rounded">
               {kw}
             </span>
           ))}
@@ -105,7 +105,7 @@ export default function CaseCard({ case: caseData }: CaseCardProps) {
       )}
 
       <div className="flex items-center gap-3 mt-3 pt-3 border-t border-slate-100 text-sm">
-        <Link href={`/case/${caseData.id}`} className="text-gold-600 hover:text-gold-700 font-medium">
+        <Link href={`/case/${caseData.id}`} className="text-[#8E6400] hover:text-[#8E6400] font-medium">
           View details
         </Link>
         {caseData.source_url && (

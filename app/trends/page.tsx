@@ -120,7 +120,7 @@ export default function TrendsPage() {
               <div className="bg-white rounded-lg shadow p-6">
                 <TrendChart data={byJurisdiction} title="Cases by Jurisdiction" chartType="bar" />
                 <p className="mt-3 text-sm text-slate-500">
-                  Shows the distribution of cases across court systems. Federal jurisdiction typically involves FOIA and federal agency transparency disputes, while state jurisdiction covers sunshine law enforcement and state-level open records appeals. The balance between federal and state cases reflects where the most significant access-to-information battles are being fought.
+                  Shows case distribution across court systems. Federal cases typically involve FOIA and agency transparency disputes; state cases cover sunshine laws and open records appeals. The federal-state balance reveals where major access-to-information battles occur.
                 </p>
               </div>
             )}
