@@ -5,6 +5,7 @@ import NavBar from '@/components/NavBar';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
   variable: '--font-montserrat',
   display: 'swap',
 });
