@@ -34,7 +34,7 @@ export default function AnalysisPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-500"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gold-500"></div>
       </div>
     );
   }
@@ -74,7 +74,7 @@ export default function AnalysisPage() {
       <div className="mt-6 grid grid-cols-3 gap-4">
         <div className="bg-white rounded-lg shadow p-4">
           <p className="text-xs text-slate-400 uppercase tracking-wide">Courts</p>
-          <p className="text-2xl font-bold text-amber-600">
+          <p className="text-2xl font-bold text-gold-600">
             {data.nodes.filter((n: any) => n.type === 'court').length}
           </p>
         </div>

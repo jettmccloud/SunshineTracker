@@ -46,7 +46,7 @@ export default function TrendsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-500"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gold-500"></div>
       </div>
     );
   }
@@ -86,9 +86,9 @@ export default function TrendsPage() {
                 const pctChange = ((recentAvg - earlierAvg) / earlierAvg) * 100;
                 const peak = sorted.reduce((max, d) => d.count > max.count ? d : max, sorted[0]);
                 return (
-                  <div className="mt-4 p-4 bg-amber-50 rounded-lg border border-amber-100">
-                    <h3 className="text-sm font-semibold text-amber-800 mb-2">Trend Insight</h3>
-                    <p className="text-sm text-amber-900">
+                  <div className="mt-4 p-4 bg-gold-50 rounded-lg border border-gold-100">
+                    <h3 className="text-sm font-semibold text-gold-800 mb-2">Trend Insight</h3>
+                    <p className="text-sm text-gold-900">
                       {pctChange > 10
                         ? `Recent filings have increased by approximately ${Math.round(pctChange)}% compared to earlier periods, suggesting growing tension between public access demands and government transparency. This uptick may reflect expanded enforcement of sunshine laws or increased resistance to disclosure.`
                         : pctChange < -10

@@ -69,7 +69,7 @@ export default function CollectionsPage() {
       <div className="text-center py-20">
         <h1 className="text-2xl font-bold text-slate-900 mb-4">Collections</h1>
         <p className="text-slate-600 mb-4">Log in to create and manage case collections.</p>
-        <Link href="/auth/login" className="px-4 py-2 bg-amber-500 text-white rounded hover:bg-amber-600 transition">
+        <Link href="/auth/login" className="px-4 py-2 bg-sunshine-500 text-white rounded hover:bg-sunshine-600 transition">
           Log In
         </Link>
       </div>
@@ -79,7 +79,7 @@ export default function CollectionsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-500"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gold-500"></div>
       </div>
     );
   }
@@ -90,7 +90,7 @@ export default function CollectionsPage() {
         <h1 className="text-2xl font-bold text-slate-900">Collections</h1>
         <button
           onClick={() => setShowForm(!showForm)}
-          className="px-4 py-2 bg-amber-500 text-white rounded hover:bg-amber-600 transition text-sm"
+          className="px-4 py-2 bg-sunshine-500 text-white rounded hover:bg-sunshine-600 transition text-sm"
         >
           New Collection
         </button>
@@ -105,7 +105,7 @@ export default function CollectionsPage() {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-300 rounded focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none"
+                className="w-full px-3 py-2 border border-slate-300 rounded focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none"
                 placeholder="e.g., Michigan FOIA Cases 2020-2025"
                 required
               />
@@ -115,13 +115,13 @@ export default function CollectionsPage() {
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-300 rounded focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none"
+                className="w-full px-3 py-2 border border-slate-300 rounded focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none"
                 rows={2}
                 placeholder="Optional description..."
               />
             </div>
             <div className="flex gap-2">
-              <button type="submit" className="px-4 py-2 bg-amber-500 text-white rounded hover:bg-amber-600 transition text-sm">
+              <button type="submit" className="px-4 py-2 bg-sunshine-500 text-white rounded hover:bg-sunshine-600 transition text-sm">
                 Create
               </button>
               <button type="button" onClick={() => setShowForm(false)} className="px-4 py-2 text-slate-600 hover:text-slate-800 text-sm">

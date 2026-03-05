@@ -55,21 +55,21 @@ export default function TrendChart({ data, title, chartType }: TrendChartProps) 
             />
             <Tooltip
               contentStyle={{
-                backgroundColor: '#fffbeb',
-                border: '1px solid #fde68a',
+                backgroundColor: '#fef9e7',
+                border: '1px solid #f9df87',
                 borderRadius: '8px',
                 fontSize: '13px',
               }}
-              labelStyle={{ color: '#78350f', fontWeight: 600 }}
-              itemStyle={{ color: '#92400e' }}
+              labelStyle={{ color: '#604303', fontWeight: 600 }}
+              itemStyle={{ color: '#815b04' }}
             />
             <Line
               type="monotone"
               dataKey="count"
-              stroke="#f59e0b"
+              stroke="#E5A307"
               strokeWidth={2.5}
-              dot={{ fill: '#f59e0b', strokeWidth: 2, r: 4 }}
-              activeDot={{ fill: '#d97706', strokeWidth: 0, r: 6 }}
+              dot={{ fill: '#E5A307', strokeWidth: 2, r: 4 }}
+              activeDot={{ fill: '#c48b06', strokeWidth: 0, r: 6 }}
             />
           </LineChart>
         ) : (
@@ -88,19 +88,19 @@ export default function TrendChart({ data, title, chartType }: TrendChartProps) 
             />
             <Tooltip
               contentStyle={{
-                backgroundColor: '#fffbeb',
-                border: '1px solid #fde68a',
+                backgroundColor: '#fef9e7',
+                border: '1px solid #f9df87',
                 borderRadius: '8px',
                 fontSize: '13px',
               }}
-              labelStyle={{ color: '#78350f', fontWeight: 600 }}
-              itemStyle={{ color: '#92400e' }}
+              labelStyle={{ color: '#604303', fontWeight: 600 }}
+              itemStyle={{ color: '#815b04' }}
             />
             <Bar
               dataKey="count"
-              fill="#fbbf24"
+              fill="#ebb420"
               radius={[4, 4, 0, 0]}
-              activeBar={{ fill: '#f59e0b' }}
+              activeBar={{ fill: '#E5A307' }}
             />
           </BarChart>
         )}

@@ -109,7 +109,7 @@ function SearchPageInner() {
         <div className="flex-1">
           {loading ? (
             <div className="flex items-center justify-center py-20">
-              <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-amber-500"></div>
+              <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-gold-500"></div>
             </div>
           ) : (
             <>
@@ -161,7 +161,7 @@ export default function SearchPage() {
   return (
     <Suspense fallback={
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-500"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gold-500"></div>
       </div>
     }>
       <SearchPageInner />

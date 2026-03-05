@@ -163,7 +163,7 @@ async function handleForgotPassword(body: { email?: string }) {
       html: `
         <h2>Password Reset</h2>
         <p>You requested a password reset for your Sunshine Case Tracker account.</p>
-        <p><a href="${resetLink}" style="display:inline-block;padding:12px 24px;background:#f59e0b;color:#fff;text-decoration:none;border-radius:6px;font-weight:bold;">Reset Password</a></p>
+        <p><a href="${resetLink}" style="display:inline-block;padding:12px 24px;background:#004681;color:#fff;text-decoration:none;border-radius:6px;font-weight:bold;">Reset Password</a></p>
         <p>Or copy and paste this link into your browser:</p>
         <p>${resetLink}</p>
         <p>This link expires in 1 hour. If you didn't request this, you can safely ignore this email.</p>

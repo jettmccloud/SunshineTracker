@@ -128,7 +128,7 @@ export default function CaseDetailPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-500"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gold-500"></div>
       </div>
     );
   }
@@ -137,7 +137,7 @@ export default function CaseDetailPage() {
     return (
       <div className="text-center py-20">
         <h2 className="text-xl text-slate-600">{error || 'Case not found'}</h2>
-        <Link href="/search" className="text-amber-600 hover:underline mt-2 inline-block">
+        <Link href="/search" className="text-gold-600 hover:underline mt-2 inline-block">
           Back to search
         </Link>
       </div>
@@ -148,7 +148,7 @@ export default function CaseDetailPage() {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <Link href="/search" className="text-sm text-amber-600 hover:underline mb-4 inline-block">
+      <Link href="/search" className="text-sm text-gold-600 hover:underline mb-4 inline-block">
         &larr; Back to search results
       </Link>
 
@@ -173,15 +173,15 @@ export default function CaseDetailPage() {
         </div>
 
         {/* Category context — why this case matters to a journalist */}
-        <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
-          <span className="text-sm font-semibold text-amber-800">{CATEGORY_LABELS[caseData.category] || 'Public Records'}</span>
-          <p className="text-sm text-amber-700 mt-0.5">
+        <div className="mt-4 p-3 bg-gold-50 border border-gold-200 rounded-lg">
+          <span className="text-sm font-semibold text-gold-800">{CATEGORY_LABELS[caseData.category] || 'Public Records'}</span>
+          <p className="text-sm text-gold-700 mt-0.5">
             {CATEGORY_DESCRIPTIONS[caseData.category] || 'This case is related to public records access.'}
           </p>
           {caseData.matched_keywords?.length > 0 && (
             <div className="flex flex-wrap gap-1 mt-2">
               {caseData.matched_keywords.map((kw) => (
-                <span key={kw} className="px-2 py-0.5 bg-amber-100 text-amber-800 text-xs rounded font-medium">
+                <span key={kw} className="px-2 py-0.5 bg-gold-100 text-gold-800 text-xs rounded font-medium">
                   {kw}
                 </span>
               ))}
@@ -238,7 +238,7 @@ export default function CaseDetailPage() {
           {isLoggedIn && (
             <button
               onClick={() => { setShowAddToCollection(!showAddToCollection); if (!showAddToCollection) loadCollections(); }}
-              className="px-4 py-2 text-sm bg-amber-100 text-amber-800 rounded hover:bg-amber-200 transition"
+              className="px-4 py-2 text-sm bg-gold-100 text-gold-800 rounded hover:bg-gold-200 transition"
             >
               Save to Collection
             </button>
@@ -248,18 +248,18 @@ export default function CaseDetailPage() {
         </div>
 
         {showAddToCollection && (
-          <div className="mt-4 p-4 bg-amber-50 rounded-lg">
+          <div className="mt-4 p-4 bg-gold-50 rounded-lg">
             <h3 className="font-medium text-sm mb-2">Select a collection:</h3>
             {collections.length > 0 ? (
               <div className="space-y-2">
                 {collections.map((col) => (
-                  <button key={col.id} onClick={() => addToCollection(col.id)} className="block w-full text-left px-3 py-2 text-sm bg-white rounded border hover:border-amber-400 transition">
+                  <button key={col.id} onClick={() => addToCollection(col.id)} className="block w-full text-left px-3 py-2 text-sm bg-white rounded border hover:border-gold-400 transition">
                     {col.name}
                   </button>
                 ))}
               </div>
             ) : (
-              <p className="text-sm text-slate-500">No collections yet. <Link href="/collections" className="text-amber-600 hover:underline">Create one</Link></p>
+              <p className="text-sm text-slate-500">No collections yet. <Link href="/collections" className="text-gold-600 hover:underline">Create one</Link></p>
             )}
           </div>
         )}

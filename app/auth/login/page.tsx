@@ -60,7 +60,7 @@ function LoginForm() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-3 py-2 border border-slate-300 rounded focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none"
+            className="w-full px-3 py-2 border border-slate-300 rounded focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none"
             required
           />
         </div>
@@ -71,13 +71,13 @@ function LoginForm() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-3 py-2 border border-slate-300 rounded focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none"
+            className="w-full px-3 py-2 border border-slate-300 rounded focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none"
             required
           />
         </div>
 
         <div className="flex justify-end">
-          <Link href="/auth/forgot-password" className="text-sm text-amber-600 hover:underline">
+          <Link href="/auth/forgot-password" className="text-sm text-gold-600 hover:underline">
             Forgot Password?
           </Link>
         </div>
@@ -85,14 +85,14 @@ function LoginForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full px-4 py-2 bg-amber-500 text-white rounded hover:bg-amber-600 transition disabled:opacity-50"
+          className="w-full px-4 py-2 bg-sunshine-500 text-white rounded hover:bg-sunshine-600 transition disabled:opacity-50"
         >
           {loading ? 'Logging in...' : 'Log In'}
         </button>
 
         <p className="text-sm text-center text-slate-500">
           Don&apos;t have an account?{' '}
-          <Link href="/auth/signup" className="text-amber-600 hover:underline">
+          <Link href="/auth/signup" className="text-gold-600 hover:underline">
             Sign up
           </Link>
         </p>

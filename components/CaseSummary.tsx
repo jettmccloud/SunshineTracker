@@ -8,7 +8,7 @@ interface CaseSummaryProps {
 
 const SEVERITY_COLORS: Record<string, { bg: string; border: string; text: string; icon: string }> = {
   high: { bg: 'bg-red-50', border: 'border-red-300', text: 'text-red-800', icon: 'text-red-600' },
-  medium: { bg: 'bg-amber-50', border: 'border-amber-300', text: 'text-amber-800', icon: 'text-amber-600' },
+  medium: { bg: 'bg-gold-50', border: 'border-gold-300', text: 'text-gold-800', icon: 'text-gold-600' },
   low: { bg: 'bg-blue-50', border: 'border-blue-300', text: 'text-blue-800', icon: 'text-blue-600' },
 };
 

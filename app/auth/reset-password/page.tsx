@@ -22,7 +22,7 @@ function ResetPasswordForm() {
           <p className="text-slate-600">
             This password reset link is invalid. Please request a new one.
           </p>
-          <Link href="/auth/forgot-password" className="inline-block text-amber-600 hover:underline text-sm">
+          <Link href="/auth/forgot-password" className="inline-block text-gold-600 hover:underline text-sm">
             Request New Reset Link
           </Link>
         </div>
@@ -80,7 +80,7 @@ function ResetPasswordForm() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-3 py-2 border border-slate-300 rounded focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none"
+            className="w-full px-3 py-2 border border-slate-300 rounded focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none"
             required
             minLength={8}
           />
@@ -92,7 +92,7 @@ function ResetPasswordForm() {
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="w-full px-3 py-2 border border-slate-300 rounded focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none"
+            className="w-full px-3 py-2 border border-slate-300 rounded focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none"
             required
             minLength={8}
           />
@@ -101,13 +101,13 @@ function ResetPasswordForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full px-4 py-2 bg-amber-500 text-white rounded hover:bg-amber-600 transition disabled:opacity-50"
+          className="w-full px-4 py-2 bg-sunshine-500 text-white rounded hover:bg-sunshine-600 transition disabled:opacity-50"
         >
           {loading ? 'Resetting...' : 'Reset Password'}
         </button>
 
         <p className="text-sm text-center text-slate-500">
-          <Link href="/auth/login" className="text-amber-600 hover:underline">
+          <Link href="/auth/login" className="text-gold-600 hover:underline">
             Back to Log In
           </Link>
         </p>

@@ -20,7 +20,7 @@ interface CaseCardProps {
 
 const CATEGORY_COLORS: Record<string, string> = {
   foia: 'bg-blue-100 text-blue-800 border-blue-200',
-  sunshine: 'bg-amber-100 text-amber-800 border-amber-200',
+  sunshine: 'bg-gold-100 text-gold-800 border-gold-200',
   missing_data: 'bg-red-100 text-red-800 border-red-200',
   access_denied: 'bg-purple-100 text-purple-800 border-purple-200',
   other: 'bg-slate-100 text-slate-700 border-slate-200',
@@ -56,7 +56,7 @@ export default function CaseCard({ case: caseData }: CaseCardProps) {
     <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-5 hover:shadow-md transition">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <Link href={`/case/${caseData.id}`} className="text-base font-semibold text-slate-900 hover:text-amber-700 transition leading-snug">
+          <Link href={`/case/${caseData.id}`} className="text-base font-semibold text-slate-900 hover:text-gold-700 transition leading-snug">
             {caseData.case_name}
           </Link>
 
@@ -97,7 +97,7 @@ export default function CaseCard({ case: caseData }: CaseCardProps) {
       {caseData.matched_keywords?.length > 0 && (
         <div className="flex flex-wrap gap-1 mt-3">
           {caseData.matched_keywords.map((kw) => (
-            <span key={kw} className="px-1.5 py-0.5 bg-amber-50 text-amber-700 text-xs rounded">
+            <span key={kw} className="px-1.5 py-0.5 bg-gold-50 text-gold-700 text-xs rounded">
               {kw}
             </span>
           ))}
@@ -105,7 +105,7 @@ export default function CaseCard({ case: caseData }: CaseCardProps) {
       )}
 
       <div className="flex items-center gap-3 mt-3 pt-3 border-t border-slate-100 text-sm">
-        <Link href={`/case/${caseData.id}`} className="text-amber-600 hover:text-amber-700 font-medium">
+        <Link href={`/case/${caseData.id}`} className="text-gold-600 hover:text-gold-700 font-medium">
           View details
         </Link>
         {caseData.source_url && (

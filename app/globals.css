@@ -6,6 +6,10 @@ body {
   @apply bg-slate-50 text-slate-900;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-montserrat), sans-serif;
+}
+
 .prose h1, .prose h2, .prose h3 {
   @apply font-bold text-slate-800;
 }

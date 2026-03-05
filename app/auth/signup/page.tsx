@@ -63,7 +63,7 @@ export default function SignupPage() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-3 py-2 border border-slate-300 rounded focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none"
+            className="w-full px-3 py-2 border border-slate-300 rounded focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none"
             required
           />
         </div>
@@ -74,7 +74,7 @@ export default function SignupPage() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-3 py-2 border border-slate-300 rounded focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none"
+            className="w-full px-3 py-2 border border-slate-300 rounded focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none"
             required
             minLength={8}
           />
@@ -86,7 +86,7 @@ export default function SignupPage() {
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="w-full px-3 py-2 border border-slate-300 rounded focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none"
+            className="w-full px-3 py-2 border border-slate-300 rounded focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none"
             required
           />
         </div>
@@ -94,14 +94,14 @@ export default function SignupPage() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full px-4 py-2 bg-amber-500 text-white rounded hover:bg-amber-600 transition disabled:opacity-50"
+          className="w-full px-4 py-2 bg-sunshine-500 text-white rounded hover:bg-sunshine-600 transition disabled:opacity-50"
         >
           {loading ? 'Creating account...' : 'Sign Up'}
         </button>
 
         <p className="text-sm text-center text-slate-500">
           Already have an account?{' '}
-          <Link href="/auth/login" className="text-amber-600 hover:underline">
+          <Link href="/auth/login" className="text-gold-600 hover:underline">
             Log in
           </Link>
         </p>
