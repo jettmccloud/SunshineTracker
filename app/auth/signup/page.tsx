@@ -39,8 +39,8 @@ export default function SignupPage() {
       }
       localStorage.setItem('sunshine_token', data.token);
       localStorage.setItem('sunshine_email', data.email);
+      window.dispatchEvent(new Event('auth-change'));
       router.push('/');
-      router.refresh();
     } catch {
       setError('Network error. Please try again.');
     } finally {

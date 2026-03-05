@@ -12,15 +12,31 @@ export default function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem('sunshine_token');
-    if (token) {
-      try {
-        const payload = JSON.parse(atob(token.split('.')[1]));
-        setUser({ email: payload.email });
-      } catch {
-        localStorage.removeItem('sunshine_token');
+    function checkToken() {
+      const token = localStorage.getItem('sunshine_token');
+      if (token) {
+        try {
+          const payload = JSON.parse(atob(token.split('.')[1]));
+          setUser({ email: payload.email });
+        } catch {
+          localStorage.removeItem('sunshine_token');
+          setUser(null);
+        }
+      } else {
+        setUser(null);
       }
     }
+
+    checkToken();
+
+    // Listen for token changes from other components (login/signup/logout)
+    window.addEventListener('storage', checkToken);
+    // Custom event for same-tab updates
+    window.addEventListener('auth-change', checkToken);
+    return () => {
+      window.removeEventListener('storage', checkToken);
+      window.removeEventListener('auth-change', checkToken);
+    };
   }, []);
 
   const handleLogout = () => {
