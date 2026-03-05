@@ -167,7 +167,7 @@ export default function Dashboard() {
                     {c.matched_keywords?.length > 0 && (
                       <div className="flex flex-wrap gap-1 mt-1.5">
                         {c.matched_keywords.map((kw) => (
-                          <span key={kw} className="px-1.5 py-0.5 bg-slate-100 text-slate-500 text-xs rounded">{kw}</span>
+                          <span key={kw} className="px-1.5 py-0.5 bg-[#93C8F7] text-sunshine-800 text-xs rounded">{kw}</span>
                         ))}
                       </div>
                     )}

@@ -181,7 +181,7 @@ export default function CaseDetailPage() {
           {caseData.matched_keywords?.length > 0 && (
             <div className="flex flex-wrap gap-1 mt-2">
               {caseData.matched_keywords.map((kw) => (
-                <span key={kw} className="px-2 py-0.5 bg-[#FFDB84] bg-opacity-70 text-[#8E6400] text-xs rounded font-medium">
+                <span key={kw} className="px-2 py-0.5 bg-[#93C8F7] text-sunshine-800 text-xs rounded font-medium">
                   {kw}
                 </span>
               ))}
