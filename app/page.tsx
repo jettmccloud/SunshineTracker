@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import InsightsSection from '@/components/InsightsSection';
 
 interface CasePreview {
   id: string;
@@ -20,10 +21,13 @@ interface DashboardStats {
   by_category: { label: string; count: number }[];
   by_jurisdiction: { label: string; count: number }[];
   recent_cases: CasePreview[];
+  top_courts: { label: string; count: number; court_id?: string }[];
+  top_judges: { label: string; count: number }[];
+  top_keywords: { label: string; count: number }[];
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
-  foia: 'bg-[#93C8F7] text-sunshine-800 border-sunshine-300',
+  foia: 'bg-[#C3E0FD] text-sunshine-800 border-sunshine-300',
   sunshine: 'bg-[#FFDB84] text-[#8E6400] border-[#FFDB84]',
   missing_data: 'bg-[#AA3500] bg-opacity-15 text-[#AA3500] border-[#AA3500]',
   access_denied: 'bg-[#09718E] bg-opacity-15 text-[#09718E] border-[#09718E]',
@@ -31,7 +35,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 };
 
 const KEYWORD_PILL_COLORS: Record<string, string> = {
-  foia: 'bg-[#93C8F7] text-sunshine-800',
+  foia: 'bg-[#C3E0FD] text-sunshine-800',
   sunshine: 'bg-[#FFDB84] text-[#8E6400]',
   missing_data: 'bg-[#AA3500] bg-opacity-15 text-[#AA3500]',
   access_denied: 'bg-[#09718E] bg-opacity-15 text-[#09718E]',
@@ -58,14 +62,20 @@ export default function Dashboard() {
   useEffect(() => {
     async function load() {
       try {
-        const [catRes, jurRes, casesRes] = await Promise.all([
+        const [catRes, jurRes, casesRes, courtRes, judgeRes, kwRes] = await Promise.all([
           fetch('/api/trends?group_by=category'),
           fetch('/api/trends?group_by=jurisdiction'),
           fetch('/api/search?per_page=15'),
+          fetch('/api/trends?group_by=court'),
+          fetch('/api/trends?group_by=judge'),
+          fetch('/api/trends?group_by=keyword'),
         ]);
         const catData = await catRes.json();
         const jurData = await jurRes.json();
         const casesData = await casesRes.json();
+        const courtData = await courtRes.json();
+        const judgeData = await judgeRes.json();
+        const kwData = await kwRes.json();
 
         const totalCases = (catData.data || []).reduce((sum: number, d: any) => sum + d.count, 0);
         setStats({
@@ -73,6 +83,9 @@ export default function Dashboard() {
           by_category: catData.data || [],
           by_jurisdiction: jurData.data || [],
           recent_cases: casesData.cases || [],
+          top_courts: courtData.data || [],
+          top_judges: judgeData.data || [],
+          top_keywords: kwData.data || [],
         });
       } catch (err) {
         console.error('Failed to load dashboard:', err);
@@ -135,6 +148,15 @@ export default function Dashboard() {
           )}
         </Link>
       </div>
+
+      {/* Key players & topics */}
+      {stats && (
+        <InsightsSection
+          courts={stats.top_courts}
+          judges={stats.top_judges}
+          keywords={stats.top_keywords}
+        />
+      )}
 
       {/* Recent cases — the main content journalists want */}
       <div className="bg-white rounded-lg shadow">

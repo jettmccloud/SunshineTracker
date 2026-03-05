@@ -185,7 +185,7 @@ export default function CaseDetailPage() {
                   caseData.category === 'sunshine' ? 'bg-[#FFDB84] text-[#8E6400]'
                   : caseData.category === 'access_denied' ? 'bg-[#09718E] bg-opacity-15 text-[#09718E]'
                   : caseData.category === 'missing_data' ? 'bg-[#AA3500] bg-opacity-15 text-[#AA3500]'
-                  : 'bg-[#93C8F7] text-sunshine-800'
+                  : 'bg-[#C3E0FD] text-sunshine-800'
                 }`}>
                   {kw}
                 </span>

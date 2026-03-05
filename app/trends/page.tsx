@@ -115,7 +115,7 @@ export default function TrendsPage() {
                       </p>
                       <a
                         href={`/search?date_from=${peak.label}-01-01&date_to=${peak.label}-12-31`}
-                        className="inline-block px-3 py-1.5 bg-[#93C8F7] text-sunshine-800 text-xs font-medium rounded hover:shadow transition"
+                        className="inline-block px-3 py-1.5 bg-[#C3E0FD] text-sunshine-800 text-xs font-medium rounded hover:shadow transition"
                       >
                         Browse all {peak.count} cases from {peak.label} &rarr;
                       </a>
@@ -150,7 +150,7 @@ export default function TrendsPage() {
                         </p>
                         <a
                           href={`/search?date_from=${currentYearData && currentYearData.count > 0 ? currentYear : mostRecentWithData.label}-01-01&date_to=${currentYearData && currentYearData.count > 0 ? currentYear : mostRecentWithData.label}-12-31`}
-                          className="inline-block px-3 py-1.5 bg-[#93C8F7] text-sunshine-800 text-xs font-medium rounded hover:shadow transition"
+                          className="inline-block px-3 py-1.5 bg-[#C3E0FD] text-sunshine-800 text-xs font-medium rounded hover:shadow transition"
                         >
                           Browse {currentYearData && currentYearData.count > 0 ? currentYear : mostRecentWithData.label} cases &rarr;
                         </a>

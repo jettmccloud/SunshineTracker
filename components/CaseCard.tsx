@@ -19,7 +19,7 @@ interface CaseCardProps {
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
-  foia: 'bg-[#93C8F7] text-sunshine-800 border-sunshine-300',
+  foia: 'bg-[#C3E0FD] text-sunshine-800 border-sunshine-300',
   sunshine: 'bg-[#FFDB84] text-[#8E6400] border-[#FFDB84]',
   missing_data: 'bg-[#AA3500] bg-opacity-15 text-[#AA3500] border-[#AA3500]',
   access_denied: 'bg-[#09718E] bg-opacity-15 text-[#09718E] border-[#09718E]',
@@ -27,7 +27,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 };
 
 const KEYWORD_PILL_COLORS: Record<string, string> = {
-  foia: 'bg-[#93C8F7] text-sunshine-800',
+  foia: 'bg-[#C3E0FD] text-sunshine-800',
   sunshine: 'bg-[#FFDB84] text-[#8E6400]',
   missing_data: 'bg-[#AA3500] bg-opacity-15 text-[#AA3500]',
   access_denied: 'bg-[#09718E] bg-opacity-15 text-[#09718E]',

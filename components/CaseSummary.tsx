@@ -84,7 +84,7 @@ export default function CaseSummary({ summary }: CaseSummaryProps) {
           <h3 className="text-sm font-semibold text-slate-700 mb-2">Legal Issues</h3>
           <div className="flex flex-wrap gap-1.5">
             {summary.legal_issues.map((issue, i) => (
-              <span key={i} className="px-2 py-0.5 bg-[#93C8F7] text-sunshine-800 text-xs rounded-full">{issue}</span>
+              <span key={i} className="px-2 py-0.5 bg-[#C3E0FD] text-sunshine-800 text-xs rounded-full">{issue}</span>
             ))}
           </div>
         </div>

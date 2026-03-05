@@ -48,9 +48,42 @@ export async function GET(req: NextRequest) {
         `;
         break;
 
+      case 'court':
+        sql = `
+          SELECT court_name AS label, court_id, COUNT(*)::int AS count
+          FROM cached_cases
+          WHERE court_name IS NOT NULL
+          GROUP BY court_name, court_id
+          ORDER BY count DESC
+          LIMIT 10
+        `;
+        break;
+
+      case 'judge':
+        sql = `
+          SELECT TRIM(j) AS label, COUNT(*)::int AS count
+          FROM cached_cases, UNNEST(judges) AS j
+          WHERE j IS NOT NULL AND TRIM(j) != ''
+          GROUP BY TRIM(j)
+          ORDER BY count DESC
+          LIMIT 10
+        `;
+        break;
+
+      case 'keyword':
+        sql = `
+          SELECT TRIM(k) AS label, COUNT(*)::int AS count
+          FROM cached_cases, UNNEST(matched_keywords) AS k
+          WHERE k IS NOT NULL AND TRIM(k) != ''
+          GROUP BY TRIM(k)
+          ORDER BY count DESC
+          LIMIT 15
+        `;
+        break;
+
       default:
         return NextResponse.json(
-          { error: 'Invalid group_by value. Use: year, jurisdiction, state, or category' },
+          { error: 'Invalid group_by value. Use: year, jurisdiction, state, category, court, judge, or keyword' },
           { status: 400 }
         );
     }
