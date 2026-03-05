@@ -74,6 +74,31 @@ export default function TrendsPage() {
           {byYear.length > 0 && (
             <div className="bg-white rounded-lg shadow p-6">
               <TrendChart data={byYear} title="Cases Filed Over Time" chartType="line" />
+              <p className="mt-3 text-sm text-slate-500">
+                Tracks the volume of public records and open government litigation over time. Rising case counts often reflect increased government resistance to disclosure requests, expanded use of FOIA and state sunshine laws by journalists and watchdog organizations, or legislative changes that broaden or restrict the right of access. Declines may indicate improved voluntary compliance, reduced enforcement funding, or shifts in legal strategy toward administrative appeals.
+              </p>
+              {byYear.length >= 2 && (() => {
+                const sorted = [...byYear].sort((a, b) => a.label.localeCompare(b.label));
+                const recent = sorted.slice(-3);
+                const earlier = sorted.slice(0, Math.max(1, sorted.length - 3));
+                const recentAvg = recent.reduce((s, d) => s + d.count, 0) / recent.length;
+                const earlierAvg = earlier.reduce((s, d) => s + d.count, 0) / earlier.length;
+                const pctChange = ((recentAvg - earlierAvg) / earlierAvg) * 100;
+                const peak = sorted.reduce((max, d) => d.count > max.count ? d : max, sorted[0]);
+                return (
+                  <div className="mt-4 p-4 bg-amber-50 rounded-lg border border-amber-100">
+                    <h3 className="text-sm font-semibold text-amber-800 mb-2">Trend Insight</h3>
+                    <p className="text-sm text-amber-900">
+                      {pctChange > 10
+                        ? `Recent filings have increased by approximately ${Math.round(pctChange)}% compared to earlier periods, suggesting growing tension between public access demands and government transparency. This uptick may reflect expanded enforcement of sunshine laws or increased resistance to disclosure.`
+                        : pctChange < -10
+                        ? `Recent filings have decreased by approximately ${Math.round(Math.abs(pctChange))}% compared to earlier periods. This could indicate improved government compliance with open records obligations, or alternatively, reduced resources for public records litigation.`
+                        : `Filing rates have remained relatively stable across the tracked period, suggesting a consistent level of public records litigation activity.`}
+                      {' '}Peak activity occurred in {peak.label} with {peak.count} case{peak.count !== 1 ? 's' : ''} filed.
+                    </p>
+                  </div>
+                );
+              })()}
             </div>
           )}
 
@@ -85,12 +110,18 @@ export default function TrendsPage() {
                   title="Cases by Category"
                   chartType="bar"
                 />
+                <p className="mt-3 text-sm text-slate-500">
+                  Breaks down cases by legal category. FOIA cases involve federal Freedom of Information Act requests, while Sunshine Laws cover state-level open records and open meetings statutes. Access Denied cases highlight instances where government agencies refused disclosure, and Missing Data flags cases with incomplete public records.
+                </p>
               </div>
             )}
 
             {byJurisdiction.length > 0 && (
               <div className="bg-white rounded-lg shadow p-6">
                 <TrendChart data={byJurisdiction} title="Cases by Jurisdiction" chartType="bar" />
+                <p className="mt-3 text-sm text-slate-500">
+                  Shows the distribution of cases across court systems. Federal jurisdiction typically involves FOIA and federal agency transparency disputes, while state jurisdiction covers sunshine law enforcement and state-level open records appeals. The balance between federal and state cases reflects where the most significant access-to-information battles are being fought.
+                </p>
               </div>
             )}
           </div>
@@ -98,6 +129,9 @@ export default function TrendsPage() {
           {byState.length > 0 && (
             <div className="bg-white rounded-lg shadow p-6">
               <h2 className="text-lg font-semibold text-slate-800 mb-4">Cases by State</h2>
+              <p className="text-sm text-slate-500 mb-4">
+                Geographic distribution of public records litigation. States with higher case counts often have stronger sunshine laws that encourage enforcement, more active press and advocacy organizations, or larger state governments generating more records requests. States with fewer cases may have weaker open records statutes or limited legal avenues for challenging denials.
+              </p>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
