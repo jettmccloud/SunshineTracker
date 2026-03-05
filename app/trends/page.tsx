@@ -111,7 +111,7 @@ export default function TrendsPage() {
                   chartType="bar"
                 />
                 <p className="mt-3 text-sm text-slate-500">
-                  Breaks down cases by legal category. FOIA cases involve federal Freedom of Information Act requests, while Sunshine Laws cover state-level open records and open meetings statutes. Access Denied cases highlight instances where government agencies refused disclosure, and Missing Data flags cases with incomplete public records.
+                  Cases are categorized by legal type. FOIA cases involve federal Freedom of Information Act requests, while Sunshine Laws encompass state-level open records and open meetings statutes. Access Denied highlights instances of government refusals to disclose, and Missing Data flags cases with incomplete public records.
                 </p>
               </div>
             )}
