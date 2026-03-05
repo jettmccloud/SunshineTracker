@@ -26,6 +26,14 @@ const CATEGORY_COLORS: Record<string, string> = {
   other: 'bg-slate-100 text-slate-700 border-slate-200',
 };
 
+const KEYWORD_PILL_COLORS: Record<string, string> = {
+  foia: 'bg-[#93C8F7] text-sunshine-800',
+  sunshine: 'bg-[#FFDB84] text-[#8E6400]',
+  missing_data: 'bg-[#AA3500] bg-opacity-15 text-[#AA3500]',
+  access_denied: 'bg-[#09718E] bg-opacity-15 text-[#09718E]',
+  other: 'bg-slate-100 text-slate-600',
+};
+
 const CATEGORY_LABELS: Record<string, string> = {
   foia: 'FOIA',
   sunshine: 'Open Records',
@@ -97,7 +105,7 @@ export default function CaseCard({ case: caseData }: CaseCardProps) {
       {caseData.matched_keywords?.length > 0 && (
         <div className="flex flex-wrap gap-1 mt-3">
           {caseData.matched_keywords.map((kw) => (
-            <span key={kw} className="px-1.5 py-0.5 bg-[#93C8F7] text-sunshine-800 text-xs rounded">
+            <span key={kw} className={`px-1.5 py-0.5 text-xs rounded ${KEYWORD_PILL_COLORS[caseData.category] || KEYWORD_PILL_COLORS.other}`}>
               {kw}
             </span>
           ))}

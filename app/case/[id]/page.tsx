@@ -181,7 +181,12 @@ export default function CaseDetailPage() {
           {caseData.matched_keywords?.length > 0 && (
             <div className="flex flex-wrap gap-1 mt-2">
               {caseData.matched_keywords.map((kw) => (
-                <span key={kw} className="px-2 py-0.5 bg-[#93C8F7] text-sunshine-800 text-xs rounded font-medium">
+                <span key={kw} className={`px-2 py-0.5 text-xs rounded font-medium ${
+                  caseData.category === 'sunshine' ? 'bg-[#FFDB84] text-[#8E6400]'
+                  : caseData.category === 'access_denied' ? 'bg-[#09718E] bg-opacity-15 text-[#09718E]'
+                  : caseData.category === 'missing_data' ? 'bg-[#AA3500] bg-opacity-15 text-[#AA3500]'
+                  : 'bg-[#93C8F7] text-sunshine-800'
+                }`}>
                   {kw}
                 </span>
               ))}

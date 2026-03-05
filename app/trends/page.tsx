@@ -85,18 +85,78 @@ export default function TrendsPage() {
                 const earlierAvg = earlier.reduce((s, d) => s + d.count, 0) / earlier.length;
                 const pctChange = ((recentAvg - earlierAvg) / earlierAvg) * 100;
                 const peak = sorted.reduce((max, d) => d.count > max.count ? d : max, sorted[0]);
+                const currentYear = new Date().getFullYear().toString();
+                const currentYearData = sorted.find(d => d.label === currentYear);
+                const lastYear = (new Date().getFullYear() - 1).toString();
+                const lastYearData = sorted.find(d => d.label === lastYear);
+                const mostRecentWithData = [...sorted].reverse().find(d => d.count > 0);
                 return (
-                  <div className="mt-4 p-4 bg-[#FFDB84] rounded-lg border border-[#FFDB84]">
-                    <h3 className="text-sm font-semibold text-[#8E6400] mb-2">Trend Insight</h3>
-                    <p className="text-sm text-[#8E6400]">
-                      {pctChange > 10
-                        ? `Recent filings have increased by approximately ${Math.round(pctChange)}% compared to earlier periods, suggesting growing tension between public access demands and government transparency. This uptick may reflect expanded enforcement of sunshine laws or increased resistance to disclosure.`
-                        : pctChange < -10
-                        ? `Recent filings have decreased by approximately ${Math.round(Math.abs(pctChange))}% compared to earlier periods. This trend could indicate improved government compliance with open records obligations, or alternatively, reduced resources for public records litigation.`
-                        : `Filing rates have remained relatively stable across the tracked period, suggesting a consistent level of public records litigation activity.`}
-                      {' '}Peak activity occurred in {peak.label} with {peak.count} case{peak.count !== 1 ? 's' : ''} filed.
-                    </p>
-                  </div>
+                  <>
+                    <div className="mt-4 p-4 bg-[#FFDB84] rounded-lg border border-[#FFDB84]">
+                      <h3 className="text-sm font-semibold text-[#8E6400] mb-2">Trend Insight</h3>
+                      <p className="text-sm text-[#8E6400] leading-relaxed">
+                        {pctChange > 10
+                          ? `Recent filings have increased by approximately ${Math.round(pctChange)}% compared to earlier periods, suggesting growing tension between public access demands and government transparency. This uptick may reflect expanded enforcement of sunshine laws or increased resistance to disclosure.`
+                          : pctChange < -10
+                          ? `Recent filings have decreased by approximately ${Math.round(Math.abs(pctChange))}% compared to earlier periods. This trend could indicate improved government compliance with open records obligations, or alternatively, reduced resources for public records litigation.`
+                          : `Filing rates have remained relatively stable across the tracked period, suggesting a consistent level of public records litigation activity.`}
+                      </p>
+                    </div>
+
+                    <div className="mt-4 bg-white border border-slate-200 rounded-lg p-5">
+                      <h3 className="text-sm font-semibold text-slate-800 mb-3">Peak Year: {peak.label}</h3>
+                      <p className="text-sm text-slate-600 leading-relaxed mb-3">
+                        {peak.label} saw the highest volume of public records litigation in the dataset with {peak.count} case{peak.count !== 1 ? 's' : ''} filed.
+                        {parseInt(peak.label) >= 2016 && parseInt(peak.label) <= 2018
+                          ? ` This period coincided with heightened scrutiny of government transparency following the 2016 election cycle. Journalists, advocacy organizations, and watchdog groups significantly increased their use of FOIA and state open records laws to investigate government activities, leading to a surge in litigation when agencies resisted disclosure. Federal agencies in particular faced an unprecedented volume of records requests, and many of the resulting lawsuits challenged blanket denials, excessive redactions, and missed response deadlines.`
+                          : parseInt(peak.label) >= 2020 && parseInt(peak.label) <= 2021
+                          ? ` This spike likely reflects pandemic-era transparency battles. Government agencies faced intense public scrutiny over COVID-19 response decisions, emergency spending, and public health data. Many agencies cited operational disruptions to justify delays, while journalists and advocates pushed back with litigation to force disclosure of critical public health and government spending records.`
+                          : ` This peak may reflect a confluence of factors including legislative changes, increased media scrutiny, or a wave of government resistance to disclosure that prompted legal challenges. Reporters should examine the specific cases from this year to identify what agencies were being sued, what records were at stake, and whether court outcomes favored public access.`}
+                      </p>
+                      <a
+                        href={`/search?date_from=${peak.label}-01-01&date_to=${peak.label}-12-31`}
+                        className="inline-block px-3 py-1.5 bg-[#93C8F7] text-sunshine-800 text-xs font-medium rounded hover:shadow transition"
+                      >
+                        Browse all {peak.count} cases from {peak.label} &rarr;
+                      </a>
+                    </div>
+
+                    {mostRecentWithData && mostRecentWithData.label !== peak.label && (
+                      <div className="mt-4 bg-white border border-slate-200 rounded-lg p-5">
+                        <h3 className="text-sm font-semibold text-slate-800 mb-3">
+                          {currentYearData && currentYearData.count > 0 ? `Current Year: ${currentYear}` : `Most Recent: ${mostRecentWithData.label}`}
+                        </h3>
+                        <p className="text-sm text-slate-600 leading-relaxed mb-3">
+                          {currentYearData && currentYearData.count > 0 ? (
+                            <>
+                              So far in {currentYear}, there {currentYearData.count === 1 ? 'has been' : 'have been'} {currentYearData.count} case{currentYearData.count !== 1 ? 's' : ''} filed
+                              {lastYearData ? ` compared to ${lastYearData.count} in all of ${lastYear}` : ''}.
+                              {currentYearData.count >= peak.count
+                                ? ` This year is already on pace to match or exceed the peak year of ${peak.label}, signaling an intensifying wave of transparency litigation. Journalists should be tracking these cases closely — a surge in filings often precedes major court decisions that reshape how agencies handle records requests.`
+                                : currentYearData.count >= (peak.count * 0.5)
+                                ? ` The pace of filings suggests this could be an active year for public records litigation. This level of activity indicates ongoing tensions between government agencies and those seeking transparency, and new rulings from these cases could affect how records requests are handled going forward.`
+                                : ` While the year is still early, the current pace of filings reflects continued engagement with public records law. Reporters should watch whether filings accelerate — election years and major policy shifts typically drive increased transparency demands.`}
+                            </>
+                          ) : (
+                            <>
+                              The most recent year with case data is {mostRecentWithData.label}, which saw {mostRecentWithData.count} case{mostRecentWithData.count !== 1 ? 's' : ''} filed.
+                              {mostRecentWithData.count > earlierAvg
+                                ? ` This is above the historical average, suggesting sustained or growing demand for government transparency through litigation. Reporters should examine whether these cases are concentrated in specific jurisdictions or involve particular agencies.`
+                                : mostRecentWithData.count < earlierAvg * 0.5
+                                ? ` This is well below the historical average, which could indicate that agencies are complying more readily with records requests, or that advocacy groups have fewer resources to pursue litigation. It may also reflect a lag in case data — recently filed cases may not yet appear in the database.`
+                                : ` This is in line with historical averages, suggesting a steady baseline of public records enforcement activity.`}
+                            </>
+                          )}
+                        </p>
+                        <a
+                          href={`/search?date_from=${currentYearData && currentYearData.count > 0 ? currentYear : mostRecentWithData.label}-01-01&date_to=${currentYearData && currentYearData.count > 0 ? currentYear : mostRecentWithData.label}-12-31`}
+                          className="inline-block px-3 py-1.5 bg-[#93C8F7] text-sunshine-800 text-xs font-medium rounded hover:shadow transition"
+                        >
+                          Browse {currentYearData && currentYearData.count > 0 ? currentYear : mostRecentWithData.label} cases &rarr;
+                        </a>
+                      </div>
+                    )}
+                  </>
                 );
               })()}
             </div>
@@ -122,6 +182,35 @@ export default function TrendsPage() {
                 <p className="mt-3 text-sm text-slate-500">
                   Shows case distribution across court systems. Federal cases typically involve FOIA and agency transparency disputes; state cases cover sunshine laws and open records appeals. The federal-state balance reveals where major access-to-information battles occur.
                 </p>
+                {(() => {
+                  const sorted = [...byJurisdiction].sort((a, b) => b.count - a.count);
+                  const top = sorted[0];
+                  const second = sorted[1];
+                  if (!top || !second || top.count === second.count) return null;
+                  const ratio = (top.count / Math.max(1, second.count)).toFixed(1);
+                  const topIsState = top.label.toLowerCase().includes('state');
+                  return (
+                    <div className="mt-4 p-4 bg-[#FFDB84] rounded-lg border border-[#FFDB84]">
+                      <h3 className="text-sm font-semibold text-[#8E6400] mb-2">Jurisdiction Disparity</h3>
+                      <p className="text-sm text-[#8E6400] leading-relaxed">
+                        {topIsState
+                          ? `State-level cases outnumber federal cases by a ${ratio}:1 ratio (${top.count} state vs. ${second.count} federal). This disparity suggests that the majority of public records battles are being fought under state sunshine laws and open records acts rather than federal FOIA. For journalists, this means state courts are the primary venue for transparency enforcement — and that state-level rulings, which often receive less national attention, may have the greatest practical impact on government accountability in your coverage area.`
+                          : `Federal cases outnumber state cases by a ${ratio}:1 ratio (${top.count} federal vs. ${second.count} state). This indicates that FOIA litigation at the federal level dominates the public records landscape. Federal agencies may be more resistant to disclosure, or federal courts may be the preferred venue for challenging government secrecy. Journalists covering federal agencies should pay close attention to these cases, as they often set precedents that influence how agencies nationwide handle records requests.`}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mt-3">
+                        {sorted.map((item) => (
+                          <a
+                            key={item.label}
+                            href={`/search?jurisdiction_type=${item.label}`}
+                            className="inline-block px-3 py-1 bg-white text-[#8E6400] text-xs font-medium rounded hover:shadow transition"
+                          >
+                            Browse {item.count} {item.label} case{item.count !== 1 ? 's' : ''} &rarr;
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })()}
               </div>
             )}
           </div>

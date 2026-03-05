@@ -43,6 +43,12 @@ const TYPE_LABELS: Record<string, string> = {
   category: 'Category',
 };
 
+const TYPE_DESCRIPTIONS: Record<string, string> = {
+  judge: 'Judges who presided over public records cases. Larger nodes handled more cases.',
+  court: 'Courts where cases were filed. Size reflects case volume in that venue.',
+  category: 'Legal type of dispute (FOIA, Open Records, etc.). Connections show which courts and judges handle which types.',
+};
+
 export default function NetworkGraph({ nodes: initialNodes, edges: initialEdges }: NetworkGraphProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const router = useRouter();
@@ -192,11 +198,14 @@ export default function NetworkGraph({ nodes: initialNodes, edges: initialEdges 
   return (
     <div className="relative">
       {/* Legend */}
-      <div className="flex gap-4 mb-3">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
         {Object.entries(TYPE_COLORS).map(([type, color]) => (
-          <div key={type} className="flex items-center gap-1.5">
-            <div className="w-3 h-3 rounded-full" style={{ backgroundColor: color }} />
-            <span className="text-xs text-slate-600">{TYPE_LABELS[type]}</span>
+          <div key={type} className="flex items-start gap-2">
+            <div className="w-3 h-3 rounded-full mt-0.5 shrink-0" style={{ backgroundColor: color }} />
+            <div>
+              <span className="text-xs font-semibold text-slate-700">{TYPE_LABELS[type]}</span>
+              <p className="text-xs text-slate-500 leading-snug">{TYPE_DESCRIPTIONS[type]}</p>
+            </div>
           </div>
         ))}
       </div>
