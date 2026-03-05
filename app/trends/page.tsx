@@ -92,7 +92,7 @@ export default function TrendsPage() {
                       {pctChange > 10
                         ? `Recent filings have increased by approximately ${Math.round(pctChange)}% compared to earlier periods, suggesting growing tension between public access demands and government transparency. This uptick may reflect expanded enforcement of sunshine laws or increased resistance to disclosure.`
                         : pctChange < -10
-                        ? `Recent filings have decreased by approximately ${Math.round(Math.abs(pctChange))}% compared to earlier periods. This could indicate improved government compliance with open records obligations, or alternatively, reduced resources for public records litigation.`
+                        ? `Recent filings have decreased by approximately ${Math.round(Math.abs(pctChange))}% compared to earlier periods. This trend could indicate improved government compliance with open records obligations, or alternatively, reduced resources for public records litigation.`
                         : `Filing rates have remained relatively stable across the tracked period, suggesting a consistent level of public records litigation activity.`}
                       {' '}Peak activity occurred in {peak.label} with {peak.count} case{peak.count !== 1 ? 's' : ''} filed.
                     </p>
