@@ -1,11 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { Suspense } from 'react';
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const resetSuccess = searchParams.get('reset') === 'success';
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -43,6 +46,10 @@ export default function LoginPage() {
       <h1 className="text-2xl font-bold text-slate-900 mb-6 text-center">Log In</h1>
 
       <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow p-6 space-y-4">
+        {resetSuccess && (
+          <div className="p-3 bg-green-50 text-green-700 text-sm rounded">Password reset successfully. Please log in with your new password.</div>
+        )}
+
         {error && (
           <div className="p-3 bg-red-50 text-red-700 text-sm rounded">{error}</div>
         )}
@@ -69,6 +76,12 @@ export default function LoginPage() {
           />
         </div>
 
+        <div className="flex justify-end">
+          <Link href="/auth/forgot-password" className="text-sm text-amber-600 hover:underline">
+            Forgot Password?
+          </Link>
+        </div>
+
         <button
           type="submit"
           disabled={loading}
@@ -85,5 +98,13 @@ export default function LoginPage() {
         </p>
       </form>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense>
+      <LoginForm />
+    </Suspense>
   );
 }
