@@ -1,10 +1,20 @@
 import { Pool } from 'pg';
 
+const databaseUrl = process.env.DATABASE_URL;
+const connectionString = databaseUrl
+  ? (() => {
+      const url = new URL(databaseUrl);
+      url.searchParams.set('sslmode', 'verify-full');
+      return url.toString();
+    })()
+  : undefined;
+
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  max: 20,
-  idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 2000,
+  connectionString,
+  // Functions scale independently, so keep each instance's pool small.
+  max: 2,
+  idleTimeoutMillis: 10000,
+  connectionTimeoutMillis: 5000,
 });
 
 pool.on('error', (err) => {
